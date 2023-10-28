@@ -1,7 +1,7 @@
 package main
 
 import (
-	"h0x0er/ebpf-learn/dormdir"
+	"h0x0er/ebpf-learn/getname"
 )
 
 func main() {
@@ -11,8 +11,8 @@ func main() {
 	// dorenameat.Hook()
 	// vfsread.Hook()
 
-	// getname.Hook()
+	getname.Hook()
 
-	dormdir.Hook()
+	// dormdir.Hook()
 
 }
