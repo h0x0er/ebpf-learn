@@ -1,0 +1,8 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "common.h": "c",
+        "vmlinux.h": "c",
+        "bpf_helpers.h": "c"
+    }
+}
