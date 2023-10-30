@@ -1,10 +1,11 @@
 probe="$1"
 
+ret="$PWD"
+
 cd $probe
 rm bpf_*
 go generate .
-cd ..
-
+cd $ret
 
 
 echo

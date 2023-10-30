@@ -1,7 +1,7 @@
 package main
 
 import (
-	"h0x0er/ebpf-learn/getname"
+	"h0x0er/ebpf-learn/uprobes/malloc"
 )
 
 func main() {
@@ -10,9 +10,11 @@ func main() {
 	// vfswrite.Hook()
 	// dorenameat.Hook()
 	// vfsread.Hook()
-
-	getname.Hook()
-
+	// getname.Hook()
 	// dormdir.Hook()
+
+	// uprobes
+
+	malloc.Hook()
 
 }
