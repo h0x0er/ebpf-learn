@@ -1,7 +1,7 @@
 package main
 
 import (
-	"h0x0er/ebpf-learn/uprobes/malloc"
+	"h0x0er/ebpf-learn/uprobes/printf"
 )
 
 func main() {
@@ -15,6 +15,7 @@ func main() {
 
 	// uprobes
 
-	malloc.Hook()
+	// malloc.Hook()
+	printf.Hook()
 
 }

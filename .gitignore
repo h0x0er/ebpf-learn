@@ -3,3 +3,6 @@
 
 # binary
 ebpf-learn
+
+# Ignore local
+local

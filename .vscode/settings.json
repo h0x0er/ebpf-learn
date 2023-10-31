@@ -4,5 +4,6 @@
         "common.h": "c",
         "vmlinux.h": "c",
         "bpf_helpers.h": "c"
-    }
+    },
+    "C_Cpp.formatting": "clangFormat", 
 }
