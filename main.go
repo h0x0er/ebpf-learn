@@ -1,7 +1,7 @@
 package main
 
 import (
-	"h0x0er/ebpf-learn/uprobes/printf"
+	"h0x0er/ebpf-learn/uprobes/openssl"
 )
 
 func main() {
@@ -16,6 +16,7 @@ func main() {
 	// uprobes
 
 	// malloc.Hook()
-	printf.Hook()
+	// printf.Hook()
+	openssl.Hook()
 
 }
