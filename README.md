@@ -111,9 +111,6 @@ Refer for btfcode: [getname_btf.c](getname/getname_btf.c)
 
 
 
-
-
-
 ## to read  trace events
 
 When `bpf_printk` is used; then the logs can be read using below command.
@@ -125,9 +122,10 @@ sudo cat /sys/kernel/debug/tracing/trace_pipe
 Refer: [log.sh](log.sh)
 
 
-
-
-
+## to get list of kprobes
+```sh
+cat /proc/kallsyms
+```
 
 
 
