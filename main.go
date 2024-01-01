@@ -1,15 +1,13 @@
 package main
 
-import (
-	"h0x0er/ebpf-learn/uprobes/openssl"
-)
+import "h0x0er/ebpf-learn/vfsread"
 
 func main() {
 
 	// sysopen.Hook()
 	// vfswrite.Hook()
 	// dorenameat.Hook()
-	// vfsread.Hook()
+	vfsread.Hook()
 	// getname.Hook()
 	// dormdir.Hook()
 
@@ -17,6 +15,7 @@ func main() {
 
 	// malloc.Hook()
 	// printf.Hook()
-	openssl.Hook()
+	// openssl.Hook()
+	// gethostbyname.Hook()
 
 }

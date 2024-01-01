@@ -1,4 +1,4 @@
-package vfsread
+package gethostbyname
 
 import (
 	"bytes"
@@ -12,13 +12,11 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-//go:generate go run github.com/cilium/ebpf/cmd/bpf2go -type event_t -target amd64 bpf vfsread_btf.c -- -I../includes
-
-//
-
-//
+//go:generate go run github.com/cilium/ebpf/cmd/bpf2go -type event_t -target amd64 bpf gethostbyname_btf.c -- -I../../includes
 
 func Hook() {
+
+	libcPath := "/lib/x86_64-linux-gnu/libc.so.6"
 
 	// Allow the current process to lock memory for eBPF resources.
 	if err := rlimit.RemoveMemlock(); err != nil {
@@ -30,10 +28,13 @@ func Hook() {
 	if err := loadBpfObjects(&objs, nil); err != nil {
 		log.Fatalf("loading objects: %v", err)
 	}
-
 	defer objs.Close()
 
-	link, err := link.Kprobe("vfs_read", objs.VfsRead, nil)
+	libc, err := link.OpenExecutable(libcPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	link, err := libc.Uprobe("gethostbyname", objs.HookGethostbyname, nil)
 
 	if err != nil {
 		log.Fatal(err)
@@ -47,7 +48,7 @@ func Hook() {
 	defer rb.Close()
 
 	var event bpfEventT
-
+	fmt.Println("[ebpf-learn] Listening for events.")
 	for {
 
 		record, err := rb.Read()
@@ -58,8 +59,7 @@ func Hook() {
 		if err = binary.Read(bytes.NewBuffer(record.RawSample), binary.LittleEndian, &event); err != nil {
 			log.Printf("[binaryRead] error parsing event: %s", err)
 		}
-
-		fmt.Printf("[vfs_read] Prog: %s; Data: %s; Size: %d\n", unix.ByteSliceToString(event.Exe[:]), unix.ByteSliceToString(event.Data[:]), event.Size)
+		log.Printf("[gethostbyname] Prog: %s; DomainToResolve: %s", unix.ByteSliceToString(event.Exe[:]), unix.ByteSliceToString(event.Hostname[:]))
 
 	}
 

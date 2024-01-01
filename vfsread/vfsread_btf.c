@@ -36,7 +36,7 @@ long BPF_KPROBE(vfs_read){
 
     
     bpf_get_current_comm(&event->exe , 100);
-    bpf_probe_read_user(&event->data, 100, (void *)PT_REGS_PARM2(ctx));
+    bpf_probe_read_user_str(&event->data, 100, (void *)PT_REGS_PARM2(ctx));
     event->size = (int)PT_REGS_PARM3(ctx);
 
 
