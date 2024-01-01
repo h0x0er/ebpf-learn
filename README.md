@@ -1,5 +1,9 @@
 # Learning eBPF
 
+
+## imp: bpf-core
+* https://facebookmicrosites.github.io/bpf/blog/2020/02/19/bpf-portability-and-co-re.html
+
 ## "vmlinux.h" header file
 
 To use kernel structs, run below command to generate a header file containing all structs.

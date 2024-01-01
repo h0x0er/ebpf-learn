@@ -3,7 +3,11 @@
     "files.associations": {
         "common.h": "c",
         "vmlinux.h": "c",
-        "bpf_helpers.h": "c"
+        "bpf_helpers.h": "c",
+        "libbpf_common.h": "c",
+        "libbpf.h": "c",
+        "btf.h": "c",
+        "bpf_helper_defs.h": "c"
     },
     "C_Cpp.formatting": "clangFormat", 
 }
